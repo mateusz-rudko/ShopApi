@@ -9,5 +9,6 @@ namespace Shop.Data
         {
         }
         public DbSet<ProductDto> Products { get; set; }
+      
     }
 }

@@ -9,7 +9,7 @@ namespace Shop.Logic
     public class ProductLogic : IProductLogic
     {
         private readonly ProductsDbContext _database;
-        public ProductLogic(ProductsDbContext database, Task<List<ProductDto>> products) 
+        public ProductLogic(ProductsDbContext database) 
         {
             _database = database;
         }
@@ -21,7 +21,8 @@ namespace Shop.Logic
 
         public async Task DeleteProduct(int productId)
         {
-            _database.Remove(productId);
+            var product = await _database.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            _database.Remove(product);
             await _database.SaveChangesAsync();
         }
 

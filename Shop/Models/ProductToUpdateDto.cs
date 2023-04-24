@@ -11,7 +11,7 @@ namespace Shop.Models
         [MaxLength(200)]
         public string Description { get; set; } = string.Empty;
         [Required]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must have up to two decimal places.")]
+        [RegularExpression(@"^[1-9]\d*(\.\d{1,2})?$", ErrorMessage = "Price must have up to two decimal places and cannot be a negative number!")]
         public decimal Price { get; set; }
 
     }
